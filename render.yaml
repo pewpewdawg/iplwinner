@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: ipl-winner
+    runtime: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: gunicorn --chdir backend app:app --bind 0.0.0.0:$PORT --workers 2 --timeout 60
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.3
+      - key: CRICAPI_KEY
+        sync: false   # set in the Render dashboard (optional, for live scores)
