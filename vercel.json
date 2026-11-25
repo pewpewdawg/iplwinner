@@ -1,10 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "functions": {
-    "backend/app.py": {
+    "app.py": {
       "excludeFiles": "dataset/**"
     },
-    "api/**/*.py": {
+    "backend/app.py": {
       "excludeFiles": "dataset/**"
     }
   }
