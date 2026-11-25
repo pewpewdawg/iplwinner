@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IPL Winner Predictor PRO 🏏</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="app">
+
+    <header class="topbar">
+      <div>
+        <h1>🏏 IPL Winner Predictor <span class="pro">PRO</span></h1>
+        <p class="sub">Live prediction.</p>
+      </div>
+      <div class="badge">SATWIK KUMAR </div>
+    </header>
+
+    <!-- VS BANNER -->
+    <section class="vsCard">
+      <div class="teamSide" id="leftTeamCard">
+        <img id="leftLogo" class="bigLogo" src="assets/logos/csk.png" alt="team1" />
+        <div>
+          <div class="miniLabel">TEAM 1</div>
+          <div id="leftName" class="bigName">Chennai Super Kings</div>
+        </div>
+      </div>
+
+      <div class="vsBubble">
+        <div class="vsText">VS</div>
+        <div class="pulseDot"></div>
+      </div>
+
+      <div class="teamSide right" id="rightTeamCard">
+        <div>
+          <div class="miniLabel">TEAM 2</div>
+          <div id="rightName" class="bigName">Mumbai Indians</div>
+        </div>
+        <img id="rightLogo" class="bigLogo" src="assets/logos/mi.png" alt="team2" />
+      </div>
+    </section>
+
+    <!-- SETUP -->
+    <section class="card">
+      <div class="sectionTitle">
+        <h2>🎯 Match Setup</h2>
+        <p>Pick teams + venue + toss. I’ll predict the winner like a nerdy cricket wizard 🪄</p>
+      </div>
+
+      <div class="grid">
+
+        <div>
+          <label>Team 1</label>
+          <div id="team1Dropdown" class="dropdown"></div>
+        </div>
+
+        <div>
+          <label>Team 2</label>
+          <div id="team2Dropdown" class="dropdown"></div>
+        </div>
+
+        <div>
+          <label>Venue</label>
+        <select id="venue">
+            <option value="">Loading venues...</option>
+          </select>
+
+
+        </div>
+
+        <div>
+          <label>Toss Winner</label>
+          <div id="tossDropdown" class="dropdown"></div>
+        </div>
+
+        <div>
+          <label>Toss Decision</label>
+          <select id="toss_decision">
+            <option value="bat">Bat</option>
+            <option value="field">Field</option>
+          </select>
+        </div>
+
+      </div>
+
+      <div class="actionsRow">
+        <button class="btn" onclick="predictWinner()">Predict Winner 🚀</button>
+        <button class="btn ghost" onclick="swapTeams()">Swap Teams 🔁</button>
+      </div>
+    </section>
+
+    <!-- LIVE SCORE -->
+    <section class="card">
+      <div class="sectionTitle">
+        <h2>📡 Live Score</h2>
+        <p>Powered by CricAPI. If it fails, blame the API not me 😭</p>
+      </div>
+
+      <div class="actionsRow">
+        <button class="btn ghost" onclick="loadLiveScore()">Refresh Live Score 🔄</button>
+      </div>
+
+      <div id="liveScore" class="liveBox">No live data yet.</div>
+    </section>
+
+    <!-- PREDICTION -->
+    <section class="card glow">
+      <div class="sectionTitle">
+        <h2>🧠 Prediction Result</h2>
+        <p>Pre-match ML prediction trained on real IPL historical data.</p>
+      </div>
+
+      <div id="predictionBox" class="prediction">
+        <p>Waiting for your command, boss 😎</p>
+      </div>
+
+      <div id="probBox" class="probBox hidden">
+        <div class="probRow">
+          <div class="probTeam">
+            <img id="probLeftLogo" src="assets/logos/csk.png" />
+            <span id="probLeftName">CSK</span>
+          </div>
+
+          <div class="probTeam right">
+            <span id="probRightName">MI</span>
+            <img id="probRightLogo" src="assets/logos/mi.png" />
+          </div>
+        </div>
+
+        <div class="probBar">
+          <div id="probFill" class="probFill"></div>
+        </div>
+
+        <div class="probNums">
+          <span id="leftProb">50%</span>
+          <span id="rightProb">50%</span>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      Built with ❤️ by SATWIK KUMAR  | Flask + XGBoost + CricAPI
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
