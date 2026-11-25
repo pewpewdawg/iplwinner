@@ -1,12 +1,11 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "outputDirectory": "frontend",
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/index" }
-  ],
   "functions": {
+    "backend/app.py": {
+      "excludeFiles": "dataset/**"
+    },
     "api/**/*.py": {
-      "excludeFiles": "{dataset/**,frontend/**}"
+      "excludeFiles": "dataset/**"
     }
   }
 }
