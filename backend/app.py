@@ -4,7 +4,7 @@ import os
 import numpy as np
 import requests
 from flask import Flask, jsonify, request, send_from_directory
-from xgboost import XGBClassifier
+import xgboost as xgb
 
 from names import norm_team, norm_venue
 
@@ -14,7 +14,7 @@ FRONTEND = os.path.abspath(os.path.join(HERE, "..", "frontend"))
 app = Flask(__name__, static_folder=FRONTEND, static_url_path="")
 
 # ---- Load model + encodings (no pickle, so no library-version issues) ----
-model = XGBClassifier()
+model = xgb.Booster()
 model.load_model(os.path.join(HERE, "model.json"))
 with open(os.path.join(HERE, "meta.json")) as f:
     META = json.load(f)
@@ -81,7 +81,7 @@ def predict():
         row(team1, team2, venue, toss_winner, toss_decision),
         row(team2, team1, venue, toss_winner, toss_decision),
     ])
-    p = model.predict_proba(X)[:, 1]
+    p = model.predict(xgb.DMatrix(X))
     team1_prob = float((p[0] + (1 - p[1])) / 2)
     team2_prob = 1 - team1_prob
 
