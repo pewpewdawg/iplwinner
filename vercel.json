@@ -2,9 +2,11 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "functions": {
     "app.py": {
+      "includeFiles": "{frontend/**,backend/**}",
       "excludeFiles": "dataset/**"
     },
     "backend/app.py": {
+      "includeFiles": "{frontend/**,backend/**}",
       "excludeFiles": "dataset/**"
     }
   }
